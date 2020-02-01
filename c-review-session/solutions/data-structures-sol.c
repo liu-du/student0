@@ -23,6 +23,7 @@ void remove_nodes (LinkNode **node_addr, char *str) {
         if (!strcmp((*node_addr)->value, str)) {
             LinkNode *to_free = *node_addr;
             *node_addr = to_free->next;
+            free (to_free->value); // free the char array allocated on the heap
             free (to_free);
         } else {
             node_addr = &(*node_addr)->next;
